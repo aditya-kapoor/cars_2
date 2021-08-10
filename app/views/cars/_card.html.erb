@@ -24,16 +24,20 @@
 
       <!-- Edit link car start -->
       <div class="col">
-        <%= link_to edit_car_url(car), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @car.user %>
+          <%= link_to edit_car_url(car), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link car end -->
 
       <!-- Delete link car start -->
       <div class="col">
-        <%= link_to car, method: :delete, data: { confirm: "Do you really want to delete this car?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @car.user %>
+          <%= link_to car, method: :delete, data: { confirm: "Do you really want to delete this car?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link car end -->

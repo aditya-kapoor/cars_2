@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to car, method: :delete, data: { confirm: "Do you really want to delete this car" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == car.user %>
+          <%= link_to car, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 
