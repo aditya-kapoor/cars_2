@@ -8,6 +8,7 @@ class ManufacturersController < ApplicationController
 
   # GET /manufacturers/1
   def show
+    @car = Car.new
   end
 
   # GET /manufacturers/new

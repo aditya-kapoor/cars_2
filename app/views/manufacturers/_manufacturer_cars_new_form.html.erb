@@ -1,0 +1,22 @@
+<!-- Form car start -->
+<%= form_with(model: @car, local: true) do |f| %>
+<!-- Form car end -->
+
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <%= f.label :user_id %>
+
+    <!-- Input for user_id start -->
+    <%= f.text_field :user_id, class: "form-control" %>
+    <!-- Input for user_id end -->
+  </div>
+  <!-- Label and input for user_id end -->
+
+  <!-- Label and input for manufacturer_id start -->
+  <!-- Input for manufacturer_id start -->
+  <%= f.hidden_field :manufacturer_id, value: @manufacturer.id %>
+  <!-- Input for manufacturer_id end -->
+  <!-- Label and input for manufacturer_id end -->
+
+  <%= f.submit "Create car", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
