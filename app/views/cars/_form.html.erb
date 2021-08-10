@@ -42,7 +42,7 @@
 
     <%= f.label :manufacturer_id %>
     <!-- Input for manufacturer_id start -->
-    <%= f.number_field :manufacturer_id, class: manufacturer_class, placeholder: "Enter manufacturer" %>
+    <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for manufacturer_id end -->
     <% if manufacturer_was_invalid %>
       <% car.errors.full_messages_for(:manufacturer).each do |message| %>
