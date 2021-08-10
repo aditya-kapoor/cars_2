@@ -5,7 +5,7 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.all
+    @cars = Car.page(params[:page]).per(10)
   end
 
   # GET /cars/1

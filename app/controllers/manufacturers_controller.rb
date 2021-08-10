@@ -3,7 +3,7 @@ class ManufacturersController < ApplicationController
 
   # GET /manufacturers
   def index
-    @manufacturers = Manufacturer.all
+    @manufacturers = Manufacturer.page(params[:page]).per(10)
   end
 
   # GET /manufacturers/1
