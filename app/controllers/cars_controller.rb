@@ -5,7 +5,8 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.page(params[:page]).per(10)
+    @q = Car.ransack(params[:q])
+    @cars = @q.result(:distinct => true).includes(:user, :manufacturer).page(params[:page]).per(10)
   end
 
   # GET /cars/1

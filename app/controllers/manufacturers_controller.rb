@@ -3,7 +3,8 @@ class ManufacturersController < ApplicationController
 
   # GET /manufacturers
   def index
-    @manufacturers = Manufacturer.page(params[:page]).per(10)
+    @q = Manufacturer.ransack(params[:q])
+    @manufacturers = @q.result(:distinct => true).includes(:cars).page(params[:page]).per(10)
   end
 
   # GET /manufacturers/1
