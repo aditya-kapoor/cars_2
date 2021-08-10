@@ -4,6 +4,7 @@ class CarResource < ApplicationResource
   attribute :updated_at, :datetime, writable: false
   attribute :user_id, :integer
   attribute :manufacturer_id, :integer
+  attribute :name, :string
 
   # Direct associations
 
