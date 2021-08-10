@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= car.user_id %></dd>
+      <dd>
+        <% if @car.user.present? %>
+          <%= link_to car.user, car.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Manufacturer</dt>
       <!-- Display manufacturer_id start -->
-      <dd><%= car.manufacturer_id %></dd>
+      <dd>
+        <% if @car.manufacturer.present? %>
+          <%= link_to car.manufacturer, car.manufacturer %>
+        <% end %>
+      </dd>
       <!-- Display manufacturer_id end -->
 
     </dl>
