@@ -8,5 +8,11 @@
     <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :to_s, {}, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
   <%= f.submit "Create car", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

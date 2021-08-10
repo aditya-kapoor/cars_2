@@ -4,5 +4,11 @@
 
   <%= f.hidden_field :manufacturer_id, value: @manufacturer.id %>
 
+  <div class="form-group">
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
   <%= f.submit "Create car", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
