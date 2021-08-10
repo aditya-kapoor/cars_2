@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "manufacturers#index"
   resources :cars
   resources :manufacturers
   devise_for :users
