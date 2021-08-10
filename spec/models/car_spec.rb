@@ -4,6 +4,8 @@ RSpec.describe Car, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:manufacturer) }
+
     it { should belong_to(:user) }
 
     end

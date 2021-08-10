@@ -1,6 +1,9 @@
 class Manufacturer < ApplicationRecord
   # Direct associations
 
+  has_many   :cars,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
