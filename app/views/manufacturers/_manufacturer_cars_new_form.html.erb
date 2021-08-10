@@ -1,18 +1,8 @@
-<!-- Form car start -->
 <%= form_with(model: @car, local: true) do |f| %>
-<!-- Form car end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for manufacturer_id start -->
-  <!-- Input for manufacturer_id start -->
   <%= f.hidden_field :manufacturer_id, value: @manufacturer.id %>
-  <!-- Input for manufacturer_id end -->
-  <!-- Label and input for manufacturer_id end -->
 
   <%= f.submit "Create car", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

@@ -1,12 +1,7 @@
 <% was_validated = car.errors.any? %>
 
 <%= form_with(model: car, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
-  <!-- Label and input for manufacturer_id start -->
   <div class="form-group">
     <% manufacturer_class = "form-control" %>
     <% manufacturer_was_invalid = car.errors.include?(:manufacturer) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :manufacturer_id %>
-    <!-- Input for manufacturer_id start -->
     <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for manufacturer_id end -->
     <% if manufacturer_was_invalid %>
       <% car.errors.full_messages_for(:manufacturer).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,6 +24,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for manufacturer_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

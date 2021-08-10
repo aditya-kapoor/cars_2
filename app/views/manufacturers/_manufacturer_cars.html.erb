@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @manufacturer.cars.each do |car| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to car.id, car_path(car) %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == car.user %>
           <%= link_to car, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="manufacturer_cars_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "manufacturers/manufacturer_cars_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 
