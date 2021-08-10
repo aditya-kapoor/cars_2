@@ -3,6 +3,7 @@ class CreateCars < ActiveRecord::Migration[6.0]
     create_table :cars do |t|
       t.integer :user_id
       t.integer :manufacturer_id
+      t.string :name
 
       t.timestamps
     end

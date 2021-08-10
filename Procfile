@@ -1,2 +1,2 @@
 web: bundle exec puma -p $PORT -C ./config/puma.rb
-release: bundle exec bin/rails db:seed:dump && bundle exec bin/rails db:clear && bundle exec bin/rails db:migrate && bundle exec bin/rails db:seed && bundle exec bin/rails db:correction_seq_id
+release: bundle exec rails db:seed:dump && bundle exec rake db:clear && bundle exec rails db:migrate && bundle exec rake db:seed && bundle exec rake db:correction_seq_id
