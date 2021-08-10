@@ -1,10 +1,10 @@
 class ManufacturersController < ApplicationController
-  before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
+  before_action :set_manufacturer, only: %i[show edit update destroy]
 
   # GET /manufacturers
   def index
     @q = Manufacturer.ransack(params[:q])
-    @manufacturers = @q.result(:distinct => true).includes(:cars).page(params[:page]).per(10)
+    @manufacturers = @q.result(distinct: true).includes(:cars).page(params[:page]).per(10)
   end
 
   # GET /manufacturers/1
@@ -18,15 +18,15 @@ class ManufacturersController < ApplicationController
   end
 
   # GET /manufacturers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /manufacturers
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)
 
     if @manufacturer.save
-      redirect_to @manufacturer, notice: 'Manufacturer was successfully created.'
+      redirect_to @manufacturer,
+                  notice: "Manufacturer was successfully created."
     else
       render :new
     end
@@ -35,7 +35,8 @@ class ManufacturersController < ApplicationController
   # PATCH/PUT /manufacturers/1
   def update
     if @manufacturer.update(manufacturer_params)
-      redirect_to @manufacturer, notice: 'Manufacturer was successfully updated.'
+      redirect_to @manufacturer,
+                  notice: "Manufacturer was successfully updated."
     else
       render :edit
     end
@@ -44,17 +45,19 @@ class ManufacturersController < ApplicationController
   # DELETE /manufacturers/1
   def destroy
     @manufacturer.destroy
-    redirect_to manufacturers_url, notice: 'Manufacturer was successfully destroyed.'
+    redirect_to manufacturers_url,
+                notice: "Manufacturer was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_manufacturer
-      @manufacturer = Manufacturer.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def manufacturer_params
-      params.require(:manufacturer).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_manufacturer
+    @manufacturer = Manufacturer.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def manufacturer_params
+    params.require(:manufacturer).permit(:name)
+  end
 end

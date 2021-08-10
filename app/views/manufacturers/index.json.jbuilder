@@ -1,1 +1,2 @@
-json.array! @manufacturers, partial: "manufacturers/manufacturer", as: :manufacturer
+json.array! @manufacturers, partial: "manufacturers/manufacturer",
+                            as: :manufacturer

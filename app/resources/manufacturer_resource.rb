@@ -6,8 +6,7 @@ class ManufacturerResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :cars
+  has_many :cars
 
   # Indirect associations
-
 end

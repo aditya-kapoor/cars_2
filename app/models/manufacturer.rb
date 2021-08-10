@@ -2,7 +2,7 @@ class Manufacturer < ApplicationRecord
   # Direct associations
 
   has_many   :cars,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class Manufacturer < ApplicationRecord
   def to_s
     name
   end
-
 end

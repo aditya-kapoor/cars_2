@@ -1,22 +1,22 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "manufacturers#destroy", type: :request do
   subject(:make_request) do
     jsonapi_delete "/api/v1/manufacturers/#{manufacturer.id}"
   end
 
-  describe 'basic destroy' do
+  describe "basic destroy" do
     let!(:manufacturer) { create(:manufacturer) }
 
-    it 'updates the resource' do
+    it "updates the resource" do
       expect(ManufacturerResource).to receive(:find).and_call_original
-      expect {
+      expect do
         make_request
         expect(response.status).to eq(200), response.body
-      }.to change { Manufacturer.count }.by(-1)
-      expect { manufacturer.reload }
-        .to raise_error(ActiveRecord::RecordNotFound)
-      expect(json).to eq('meta' => {})
+      end.to change { Manufacturer.count }.by(-1)
+      expect { manufacturer.reload }.
+        to raise_error(ActiveRecord::RecordNotFound)
+      expect(json).to eq("meta" => {})
     end
   end
 end

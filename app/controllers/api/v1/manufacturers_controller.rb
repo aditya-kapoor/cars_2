@@ -13,7 +13,7 @@ class Api::V1::ManufacturersController < Api::V1::GraphitiController
     manufacturer = ManufacturerResource.build(params)
 
     if manufacturer.save
-      render jsonapi: manufacturer, status: 201
+      render jsonapi: manufacturer, status: :created
     else
       render jsonapi_errors: manufacturer
     end
@@ -33,7 +33,7 @@ class Api::V1::ManufacturersController < Api::V1::GraphitiController
     manufacturer = ManufacturerResource.find(params)
 
     if manufacturer.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: manufacturer
     end
