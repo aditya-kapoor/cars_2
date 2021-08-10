@@ -9,6 +9,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :cars
+
   # Indirect associations
 
 end
