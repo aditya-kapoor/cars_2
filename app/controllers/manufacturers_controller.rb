@@ -1,26 +1,21 @@
 class ManufacturersController < ApplicationController
   before_action :set_manufacturer, only: %i[show edit update destroy]
 
-  # GET /manufacturers
   def index
     @q = Manufacturer.ransack(params[:q])
     @manufacturers = @q.result(distinct: true).includes(:cars).page(params[:page]).per(10)
   end
 
-  # GET /manufacturers/1
   def show
     @car = Car.new
   end
 
-  # GET /manufacturers/new
   def new
     @manufacturer = Manufacturer.new
   end
 
-  # GET /manufacturers/1/edit
   def edit; end
 
-  # POST /manufacturers
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)
 
@@ -32,7 +27,6 @@ class ManufacturersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /manufacturers/1
   def update
     if @manufacturer.update(manufacturer_params)
       redirect_to @manufacturer,
@@ -42,7 +36,6 @@ class ManufacturersController < ApplicationController
     end
   end
 
-  # DELETE /manufacturers/1
   def destroy
     @manufacturer.destroy
     redirect_to manufacturers_url,
@@ -51,12 +44,10 @@ class ManufacturersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_manufacturer
     @manufacturer = Manufacturer.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def manufacturer_params
     params.require(:manufacturer).permit(:name)
   end

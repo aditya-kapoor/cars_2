@@ -4,25 +4,20 @@ class CarsController < ApplicationController
 
   before_action :set_car, only: %i[show edit update destroy]
 
-  # GET /cars
   def index
     @q = Car.ransack(params[:q])
     @cars = @q.result(distinct: true).includes(:user,
                                                :manufacturer).page(params[:page]).per(10)
   end
 
-  # GET /cars/1
   def show; end
 
-  # GET /cars/new
   def new
     @car = Car.new
   end
 
-  # GET /cars/1/edit
   def edit; end
 
-  # POST /cars
   def create
     @car = Car.new(car_params)
 
@@ -38,7 +33,6 @@ class CarsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cars/1
   def update
     if @car.update(car_params)
       redirect_to @car, notice: "Car was successfully updated."
@@ -47,7 +41,6 @@ class CarsController < ApplicationController
     end
   end
 
-  # DELETE /cars/1
   def destroy
     @car.destroy
     message = "Car was successfully deleted."
@@ -68,12 +61,10 @@ class CarsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_car
     @car = Car.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def car_params
     params.require(:car).permit(:user_id, :manufacturer_id)
   end
