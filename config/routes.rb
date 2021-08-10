@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cars
   resources :manufacturers
   devise_for :users
   resources :users

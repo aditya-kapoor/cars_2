@@ -1,0 +1,57 @@
+<% was_validated = car.errors.any? %>
+
+<%= form_with(model: car, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = car.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% car.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <!-- Label and input for manufacturer_id start -->
+  <div class="form-group">
+    <% manufacturer_class = "form-control" %>
+    <% manufacturer_was_invalid = car.errors.include?(:manufacturer) %>
+
+    <% if was_validated %>
+      <% if manufacturer_was_invalid %>
+        <% manufacturer_class << " is-invalid" %>
+      <% else %>
+        <% manufacturer_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :manufacturer_id %>
+    <!-- Input for manufacturer_id start -->
+    <%= f.number_field :manufacturer_id, class: manufacturer_class, placeholder: "Enter manufacturer" %>
+    <!-- Input for manufacturer_id end -->
+    <% if manufacturer_was_invalid %>
+      <% car.errors.full_messages_for(:manufacturer).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for manufacturer_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
