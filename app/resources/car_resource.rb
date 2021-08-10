@@ -7,6 +7,8 @@ class CarResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :manufacturer
+
   belongs_to :user
 
   # Indirect associations
